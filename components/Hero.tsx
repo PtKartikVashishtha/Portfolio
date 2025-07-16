@@ -107,7 +107,7 @@ export default function Hero() {
 
       {/* Right Avatar & Icons */}
       <div className="relative w-full max-w-[18rem] sm:max-w-[24rem] h-[22rem] sm:h-[28rem] flex justify-center items-center z-10 mx-auto mt-12 md:mt-0">
-        <div className="w-full h-full p-4 rounded-full overflow-hidden border-4 border-cyan-400 shadow-2xl flex items-center justify-center bg-black z-10">
+        <div className="w-full h-full rounded-full overflow-hidden border-4 border-cyan-400 shadow-2xl flex items-center justify-center bg-black z-10">
           <img
             src="/kartik.png"
             alt="Kartik Avatar"
@@ -115,20 +115,21 @@ export default function Hero() {
           />
         </div>
 
-        {/* Floating Tech Logos */}
-        <div className="absolute top-0 right-0 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center bg-gradient-to-br from-black via-black to-gray-900 border border-white/10 shadow-xl">
-          <img src="/next.svg" alt="Next.js" className="w-10 h-10 sm:w-12 sm:h-12" />
+        {/* Floating Tech Logos (positioned farther from avatar) */}
+        <div className="absolute -top-6 -right-6 sm:-top-10 sm:-right-10 w-14 h-14 sm:w-20 sm:h-20 rounded-full flex items-center justify-center bg-gradient-to-br from-black via-black to-gray-900 border border-white/10 shadow-xl">
+          <img src="/next.svg" alt="Next.js" className="w-8 h-8 sm:w-12 sm:h-12" />
         </div>
-        <div className="absolute top-[5%] left-[0%] sm:left-[-10%] w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center bg-gradient-to-br from-black via-black to-gray-900 border border-white/10 shadow-xl">
-          <img src="/nodejs.svg" alt="Node.js" className="w-10 h-10 sm:w-12 sm:h-12" />
+        <div className="absolute top-[-4%] -left-6 sm:-left-15 w-14 h-14 sm:w-20 sm:h-20 rounded-full flex items-center justify-center bg-gradient-to-br from-black via-black to-gray-900 border border-white/10 shadow-xl">
+          <img src="/nodejs.svg" alt="Node.js" className="w-8 h-8 sm:w-12 sm:h-12" />
         </div>
-        <div className="absolute bottom-[2%] left-[2%] sm:left-[-6%] w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center bg-gradient-to-br from-black via-black to-gray-900 border border-white/10 shadow-xl">
-          <img src="/tailwind.svg" alt="Tailwind" className="w-10 h-10 sm:w-12 sm:h-12" />
+        <div className="absolute -bottom-6 left-[5%] sm:-bottom-10 sm:-left-10 w-14 h-14 sm:w-20 sm:h-20 rounded-full flex items-center justify-center bg-gradient-to-br from-black via-black to-gray-900 border border-white/10 shadow-xl">
+          <img src="/tailwind.svg" alt="Tailwind" className="w-8 h-8 sm:w-12 sm:h-12" />
         </div>
-        <div className="absolute bottom-[5%] right-[-4%] sm:right-[-5%] w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center bg-gradient-to-br from-black via-black to-gray-900 border border-white/10 shadow-xl">
-          <img src="/git.svg" alt="Git" className="w-10 h-10 sm:w-12 sm:h-12" />
+        <div className="absolute -bottom-6 -right-6 sm:-bottom-10 sm:-right-10 w-14 h-14 sm:w-20 sm:h-20 rounded-full flex items-center justify-center bg-gradient-to-br from-black via-black to-gray-900 border border-white/10 shadow-xl">
+          <img src="/git.svg" alt="Git" className="w-8 h-8 sm:w-12 sm:h-12" />
         </div>
       </div>
+
     </section>
   );
 }
