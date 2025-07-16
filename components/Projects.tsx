@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Particles from "react-tsparticles";
 import { useCallback } from "react";
 import { loadSlim } from "tsparticles-slim";
+import { Engine } from "tsparticles-engine";
 
 const projects = [
   {
@@ -23,7 +24,7 @@ const projects = [
 ];
 
 export default function Projects() {
-  const particlesInit = useCallback(async (engine: any) => {
+  const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
   }, []);
 
