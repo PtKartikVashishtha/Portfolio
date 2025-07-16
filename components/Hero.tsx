@@ -5,9 +5,10 @@ import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
 import { useCallback } from "react";
+import { Engine } from "tsparticles-engine";
 
 export default function Hero() {
-  const particlesInit = useCallback(async (engine: any) => {
+  const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
   }, []);
 

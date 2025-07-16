@@ -3,6 +3,7 @@ import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
+import { Engine } from "tsparticles-engine";
 
 const skills = {
   Frontend: [
@@ -47,7 +48,7 @@ const tabs: TabKey[] = ["Frontend", "Backend", "Others"];
 export default function Skills() {
   const [activeTab, setActiveTab] = useState<TabKey>("Frontend");
 
-  const particlesInit = useCallback(async (engine: any) => {
+  const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
   }, []);
 

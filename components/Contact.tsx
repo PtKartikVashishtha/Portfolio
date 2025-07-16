@@ -6,9 +6,10 @@ import { loadSlim } from "tsparticles-slim";
 import { FaGithub, FaLinkedin, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import type { Engine } from "tsparticles-engine";
 
 export default function Contact() {
-  const particlesInit = useCallback(async (engine: any) => {
+  const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
   }, []);
 

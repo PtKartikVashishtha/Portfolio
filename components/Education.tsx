@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
 import { useCallback } from "react";
+import { Engine } from "tsparticles-engine";
 
 const education = [
   {
@@ -29,7 +30,7 @@ const education = [
 ];
 
 export default function Education() {
-  const particlesInit = useCallback(async (engine: any) => {
+  const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
   }, []);
 
