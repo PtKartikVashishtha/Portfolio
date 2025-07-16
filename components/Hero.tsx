@@ -60,7 +60,7 @@ export default function Hero() {
         </div>
 
         <h1 className="text-[2.5rem] md:text-6xl lg:text-7xl font-extrabold leading-tight text-white">
-          I'm{" "}
+          I&apos;m{" "}
           <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-300 bg-clip-text text-transparent">
             Kartik Vashishtha
           </span>
