@@ -1,26 +1,39 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Fancy Neon Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+::-webkit-scrollbar-track {
+  background: #000000; /* Set track background to black */
+  border-radius: 12px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #06b6d4, #9333ea);
+  border-radius: 12px;
+  box-shadow: 0 0 6px #06b6d4, 0 0 12px #9333ea;
+  animation: glow-scroll 3s ease-in-out infinite alternate;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #facc15, #ec4899);
+  box-shadow: 0 0 10px #facc15, 0 0 20px #ec4899;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #9333ea #000000;
+}
+
+/* Glow animation */
+@keyframes glow-scroll {
+  0% {
+    box-shadow: 0 0 5px #06b6d4, 0 0 10px #9333ea;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  100% {
+    box-shadow: 0 0 12px #06b6d4, 0 0 24px #9333ea;
+  }
 }
