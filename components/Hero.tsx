@@ -97,17 +97,17 @@ export default function Hero() {
         <div className="pt-4">
           <a
             href="/resume_kartik.pdf"
-            download
+            download="KartikVashishtha_Resume.pdf"
             className="inline-block px-6 py-3 mt-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white font-semibold hover:brightness-110 transition"
           >
-            📄 View Resume
+            📄 Download Resume
           </a>
         </div>
       </div>
 
       {/* Right Avatar & Icons */}
       <div className="relative w-full max-w-[18rem] sm:max-w-[24rem] h-[22rem] sm:h-[28rem] flex justify-center items-center z-10 mx-auto mt-12 md:mt-0">
-        <div className="w-full h-full rounded-full overflow-hidden border-4 border-cyan-400 shadow-2xl flex items-center justify-center bg-black z-10">
+        <div className="w-full h-full p-4 rounded-full overflow-hidden border-4 border-cyan-400 shadow-2xl flex items-center justify-center bg-black z-10">
           <img
             src="/kartik.png"
             alt="Kartik Avatar"
@@ -115,7 +115,7 @@ export default function Hero() {
           />
         </div>
 
-        {/* Floating Icons */}
+        {/* Floating Tech Logos */}
         <div className="absolute top-0 right-0 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center bg-gradient-to-br from-black via-black to-gray-900 border border-white/10 shadow-xl">
           <img src="/next.svg" alt="Next.js" className="w-10 h-10 sm:w-12 sm:h-12" />
         </div>
