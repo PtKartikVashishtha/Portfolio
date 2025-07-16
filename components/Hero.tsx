@@ -48,7 +48,8 @@ export default function Hero() {
         className="absolute inset-0 w-full h-full z-0"
       />
 
-      <div className="z-10 max-w-xl text-left space-y-5 md:space-y-6 py-12 md:py-0">
+      {/* Left Section */}
+      <div className="z-10 w-full md:max-w-xl text-left space-y-5 md:space-y-6 py-12 md:py-0">
         <div className="text-2xl font-semibold text-cyan-400 flex items-center gap-2">
           <Typewriter
             options={{
@@ -59,7 +60,7 @@ export default function Hero() {
           />
         </div>
 
-        <h1 className="text-[2.5rem] md:text-6xl lg:text-7xl font-extrabold leading-tight text-white">
+        <h1 className="text-[2.2rem] sm:text-[2.5rem] md:text-6xl lg:text-7xl font-extrabold leading-tight text-white">
           I&apos;m{" "}
           <span className="bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-300 bg-clip-text text-transparent">
             Kartik Vashishtha
@@ -104,8 +105,9 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="relative w-[28rem] h-[28rem] flex justify-center items-center z-10">
-        <div className="w-[23rem] h-[29rem] rounded-full overflow-hidden border-4 border-cyan-400 shadow-2xl flex items-center justify-center bg-black z-10">
+      {/* Right Avatar & Icons */}
+      <div className="relative w-full max-w-[18rem] sm:max-w-[24rem] h-[22rem] sm:h-[28rem] flex justify-center items-center z-10 mx-auto mt-12 md:mt-0">
+        <div className="w-full h-full rounded-full overflow-hidden border-4 border-cyan-400 shadow-2xl flex items-center justify-center bg-black z-10">
           <img
             src="/kartik.png"
             alt="Kartik Avatar"
@@ -113,17 +115,18 @@ export default function Hero() {
           />
         </div>
 
-        <div className="absolute top-0 right-0 w-20 h-20 rounded-full flex items-center justify-center bg-gradient-to-br from-black via-black to-gray-900 border border-white/10 shadow-xl">
-          <img src="/next.svg" alt="Next.js" className="w-12 h-12" />
+        {/* Floating Icons */}
+        <div className="absolute top-0 right-0 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center bg-gradient-to-br from-black via-black to-gray-900 border border-white/10 shadow-xl">
+          <img src="/next.svg" alt="Next.js" className="w-10 h-10 sm:w-12 sm:h-12" />
         </div>
-        <div className="absolute top-[5%] left-[-10%] w-20 h-20 rounded-full flex items-center justify-center bg-gradient-to-br from-black via-black to-gray-900 border border-white/10 shadow-xl">
-          <img src="/nodejs.svg" alt="Node.js" className="w-12 h-12" />
+        <div className="absolute top-[5%] left-[0%] sm:left-[-10%] w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center bg-gradient-to-br from-black via-black to-gray-900 border border-white/10 shadow-xl">
+          <img src="/nodejs.svg" alt="Node.js" className="w-10 h-10 sm:w-12 sm:h-12" />
         </div>
-        <div className="absolute bottom-[2%] left-[-6%] w-20 h-20 rounded-full flex items-center justify-center bg-gradient-to-br from-black via-black to-gray-900 border border-white/10 shadow-xl">
-          <img src="/tailwind.svg" alt="Tailwind" className="w-12 h-12" />
+        <div className="absolute bottom-[2%] left-[2%] sm:left-[-6%] w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center bg-gradient-to-br from-black via-black to-gray-900 border border-white/10 shadow-xl">
+          <img src="/tailwind.svg" alt="Tailwind" className="w-10 h-10 sm:w-12 sm:h-12" />
         </div>
-        <div className="absolute bottom-[5%] right-[-5%] w-20 h-20 rounded-full flex items-center justify-center bg-gradient-to-br from-black via-black to-gray-900 border border-white/10 shadow-xl">
-          <img src="/git.svg" alt="Git" className="w-12 h-12" />
+        <div className="absolute bottom-[5%] right-[-4%] sm:right-[-5%] w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center bg-gradient-to-br from-black via-black to-gray-900 border border-white/10 shadow-xl">
+          <img src="/git.svg" alt="Git" className="w-10 h-10 sm:w-12 sm:h-12" />
         </div>
       </div>
     </section>
