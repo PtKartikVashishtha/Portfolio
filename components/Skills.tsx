@@ -1,5 +1,5 @@
 "use client";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
@@ -47,13 +47,21 @@ const tabs: TabKey[] = ["Frontend", "Backend", "Others"];
 
 export default function Skills() {
   const [activeTab, setActiveTab] = useState<TabKey>("Frontend");
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
 
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
   }, []);
 
   return (
-    <section id="skills" className="relative bg-black text-white py-24 px-6 overflow-hidden">
+    <section
+      id="skills"
+      className="relative bg-black text-white py-24 px-4 sm:px-6 overflow-hidden"
+    >
       <Particles
         id="skills-bg"
         init={particlesInit}
@@ -61,23 +69,23 @@ export default function Skills() {
           fullScreen: { enable: false },
           background: { color: "#000000" },
           particles: {
-            number: { value: 60 },
+            number: { value: isMobile ? 15 : 60 },
             color: { value: "#06b6d4" },
             shape: { type: "circle" },
             opacity: { value: 0.5 },
             size: { value: 3 },
             links: {
-              enable: true,
+              enable: !isMobile,
               distance: 150,
               color: "#06b6d4",
               opacity: 0.3,
               width: 1,
             },
-            move: { enable: true, speed: 1, direction: "none" },
+            move: { enable: true, speed: 0.6 },
           },
           interactivity: {
             events: {
-              onHover: { enable: true, mode: "repulse" },
+              onHover: { enable: !isMobile, mode: "repulse" },
               resize: true,
             },
           },
@@ -102,13 +110,13 @@ export default function Skills() {
         transition={{ duration: 0.4 }}
         viewport={{ once: true }}
       >
-        <div className="bg-[#181818] border border-white/10 rounded-xl px-4 py-2 flex gap-4 shadow-md backdrop-blur-md">
+        <div className="bg-[#181818] border border-white/10 rounded-xl px-4 py-2 flex flex-wrap gap-4 shadow-md backdrop-blur-md">
           {tabs.map((tab) => (
             <motion.button
               key={tab}
               onClick={() => setActiveTab(tab)}
               whileTap={{ scale: 0.95 }}
-              className={`px-6 py-[10px] text-sm md:text-base rounded-md font-semibold transition-all duration-200 ${
+              className={`px-6 py-2 text-sm md:text-base rounded-md font-semibold transition-all duration-200 ${
                 activeTab === tab
                   ? "bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-lg"
                   : "text-white/60 hover:text-white"
@@ -131,16 +139,21 @@ export default function Skills() {
             viewport={{ once: true }}
           >
             <motion.div
-              animate={{ y: [0, -6, 0] }}
+              animate={!isMobile ? { y: [0, -6, 0] } : undefined}
               transition={{
                 duration: 3,
                 repeat: Infinity,
                 ease: "easeInOut",
                 delay: i * 0.15,
               }}
-              className="w-24 h-24 rounded-full bg-[#0f0f0f] border border-white/10 flex items-center justify-center shadow-lg hover:shadow-purple-500/30 transition"
+              className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-[#0f0f0f] border border-white/10 flex items-center justify-center shadow-lg hover:shadow-purple-500/30 transition"
             >
-              <img src={skill.icon} alt={skill.name} className="w-12 h-12" />
+              <img
+                src={skill.icon}
+                alt={skill.name}
+                className="w-10 h-10 sm:w-12 sm:h-12"
+                loading="lazy"
+              />
             </motion.div>
             <span className="text-sm font-medium text-white/90">{skill.name}</span>
           </motion.div>

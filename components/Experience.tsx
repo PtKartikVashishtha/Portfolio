@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Engine } from "tsparticles-engine";
 
 const experiences = [
@@ -10,25 +10,36 @@ const experiences = [
     title: "Full Stack Developer (Part-time)",
     company: "IPU IIF",
     duration: "Mar 2025 – Present",
-    description: "Building internal portals and dashboards using React, Node.js, Prisma, and PostgreSQL.",
+    description:
+      "Building internal portals and dashboards using React, Node.js, Prisma, and PostgreSQL.",
     link: "https://github.com/PtKartikVashishtha",
   },
   {
     title: "Frontend Developer Intern",
     company: "SyncAndExplore",
     duration: "Jun 2025 – Present",
-    description: "Developing frontend interfaces with Next.js and Tailwind CSS, focused on clean UI and performance.",
+    description:
+      "Developing frontend interfaces with Next.js and Tailwind CSS, focused on clean UI and performance.",
     link: "https://github.com/PtKartikVashishtha",
   },
 ];
 
 export default function Experience() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
+
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine);
   }, []);
 
   return (
-    <section id="experience" className="relative py-28 px-6 bg-black text-white overflow-hidden">
+    <section
+      id="experience"
+      className="relative py-24 px-4 sm:px-6 bg-black text-white overflow-hidden"
+    >
       <Particles
         id="experience-bg"
         init={particlesInit}
@@ -36,29 +47,33 @@ export default function Experience() {
           fullScreen: { enable: false },
           background: { color: "#000000" },
           particles: {
-            number: { value: 60 },
+            number: { value: isMobile ? 15 : 50 },
             color: { value: "#06b6d4" },
             shape: { type: "circle" },
-            opacity: { value: 0.5 },
+            opacity: { value: 0.4 },
             size: { value: 3 },
             links: {
-              enable: true,
-              distance: 150,
+              enable: !isMobile,
+              distance: 140,
               color: "#06b6d4",
-              opacity: 0.3,
+              opacity: 0.25,
               width: 1,
             },
-            move: { enable: true, speed: 1 },
+            move: { enable: true, speed: 0.7 },
           },
           interactivity: {
-            events: { onHover: { enable: true, mode: "repulse" }, resize: true },
+            events: {
+              onHover: { enable: !isMobile, mode: "repulse" },
+              resize: true,
+            },
           },
         }}
         className="absolute inset-0 w-full h-full z-0"
       />
 
+      {/* Section Heading */}
       <motion.h2
-        className="text-4xl md:text-5xl font-extrabold text-center bg-gradient-to-r from-purple-400 via-cyan-400 to-yellow-400 bg-clip-text text-transparent mb-16 z-10 relative"
+        className="text-[2.2rem] sm:text-[2.5rem] md:text-[3rem] font-extrabold text-center bg-gradient-to-r from-purple-400 via-cyan-400 to-yellow-400 bg-clip-text text-transparent mb-14 z-10 relative"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -67,32 +82,32 @@ export default function Experience() {
         💼 Experience
       </motion.h2>
 
-      <div className="relative z-10 max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
+      {/* Experience Cards */}
+      <div className="relative z-10 grid gap-8 sm:grid-cols-2 max-w-6xl mx-auto">
         {experiences.map((exp, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: i * 0.2 }}
+            transition={{ duration: 0.5, delay: i * 0.15 }}
             viewport={{ once: true }}
-            className="rounded-xl border border-white/10 bg-[#0f0f0f]/70 backdrop-blur-md p-6 shadow-2xl hover:shadow-cyan-500/20 flex flex-col justify-between h-[300px]"
+            className="rounded-xl border border-white/10 bg-[#0f0f0f]/70 backdrop-blur-md p-6 shadow-lg hover:shadow-cyan-500/20 transition-all duration-300"
           >
-            <div>
-              <h3 className="text-xl md:text-2xl font-semibold bg-gradient-to-r from-purple-400 via-cyan-400 to-yellow-300 bg-clip-text text-transparent mb-1">
-                {exp.title}
-              </h3>
-              <p className="text-sm text-white/70 font-medium">{exp.company} • {exp.duration}</p>
-              <p className="text-sm text-gray-300 mt-3 leading-relaxed">{exp.description}</p>
-            </div>
-            <div className="mt-4">
-              <a
-                href={exp.link}
-                target="_blank"
-                className="inline-block text-sm px-4 py-2 rounded-md border border-white hover:bg-white hover:text-black transition"
-              >
-                Code ↗
-              </a>
-            </div>
+            <h3 className="text-lg sm:text-xl font-semibold bg-gradient-to-r from-purple-400 via-cyan-400 to-yellow-300 bg-clip-text text-transparent mb-1">
+              {exp.title}
+            </h3>
+            <p className="text-sm text-white/70 font-medium mb-2">
+              {exp.company} • {exp.duration}
+            </p>
+            <p className="text-sm text-gray-300 mb-4">{exp.description}</p>
+            <a
+              href={exp.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block text-sm px-4 py-2 rounded-md border border-white hover:bg-white hover:text-black transition"
+            >
+              Code ↗
+            </a>
           </motion.div>
         ))}
       </div>

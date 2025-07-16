@@ -12,33 +12,45 @@ export default function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
+    let timeout: NodeJS.Timeout;
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        setScrolled(window.scrollY > 10);
 
-      let closestSection = "";
-      let closestOffset = Infinity;
+        let closestSection = "";
+        let closestOffset = Infinity;
 
-      navItems.forEach((id) => {
-        const el = document.getElementById(id.toLowerCase());
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          const offset = Math.abs(rect.top - 120);
-          if (offset < closestOffset && rect.top < window.innerHeight) {
-            closestOffset = offset;
-            closestSection = id;
+        navItems.forEach((id) => {
+          const el = document.getElementById(id.toLowerCase());
+          if (el) {
+            const rect = el.getBoundingClientRect();
+            const offset = Math.abs(rect.top - 120);
+            if (offset < closestOffset && rect.top < window.innerHeight) {
+              closestOffset = offset;
+              closestSection = id;
+            }
           }
-        }
-      });
+        });
 
-      if (closestSection) {
-        setActive(closestSection);
-      }
+        if (closestSection) {
+          setActive(closestSection);
+        }
+      }, 50);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      clearTimeout(timeout);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
+
+  // Prevent scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "auto";
+  }, [menuOpen]);
 
   return (
     <header
@@ -56,7 +68,7 @@ export default function NavBar() {
           ✦ Kartik
         </motion.a>
 
-        <ul className="hidden md:flex gap-5 md:gap-8 text-sm md:text-base font-medium tracking-tight relative">
+        <ul className="hidden md:flex gap-5 md:gap-8 text-sm md:text-base font-medium tracking-tight">
           {navItems.map((item) => (
             <li key={item} className="relative group">
               <Link
@@ -77,7 +89,10 @@ export default function NavBar() {
           ))}
         </ul>
 
-        <div className="md:hidden text-white text-3xl z-50" onClick={() => setMenuOpen(!menuOpen)}>
+        <div
+          className="md:hidden text-white text-3xl z-50 cursor-pointer"
+          onClick={() => setMenuOpen((prev) => !prev)}
+        >
           {menuOpen ? <HiOutlineX /> : <HiOutlineMenu />}
         </div>
       </nav>
@@ -88,16 +103,14 @@ export default function NavBar() {
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="md:hidden fixed top-0 right-0 w-4/5 h-screen bg-black/95 z-40 flex flex-col items-start p-8 gap-8"
+            transition={{ type: "tween", ease: "easeInOut", duration: 0.3 }}
+            className="md:hidden fixed top-0 right-0 w-4/5 h-screen bg-black/95 z-40 flex flex-col items-start p-8 gap-8 shadow-2xl"
           >
             {navItems.map((item) => (
               <motion.a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                onClick={() => {
-                  setMenuOpen(false);
-                }}
+                onClick={() => setMenuOpen(false)}
                 className={`text-lg font-medium transition-colors ${
                   active === item ? "text-cyan-400" : "text-white/80"
                 } hover:text-cyan-300`}

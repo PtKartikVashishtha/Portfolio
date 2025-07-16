@@ -37,3 +37,8 @@
     box-shadow: 0 0 12px #06b6d4, 0 0 24px #9333ea;
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}
+

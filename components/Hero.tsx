@@ -106,7 +106,7 @@ export default function Hero() {
       </div>
 
             
-      <div className="relative md:w-[40%] w-full max-w-[18rem] sm:max-w-[22rem] h-[22rem] sm:h-[28rem] flex justify-start items-center z-10 md:ml-8 mt-12 md:mt-0 mr-18 ">
+      <div className="relative md:w-[40%] w-full max-w-[18rem] sm:max-w-[22rem] h-[22rem] sm:h-[28rem] flex justify-start items-center z-10 md:ml-8 mt-12 md:mt-3 mr-18 ">
         <div className="w-full h-full rounded-full overflow-hidden border-4 border-cyan-400 shadow-2xl flex items-center justify-center bg-black z-10">
           <img
             src="/kartik.png"
