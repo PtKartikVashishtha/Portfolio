@@ -105,7 +105,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Avatar & Floating Icons */}
       <div className="relative md:w-[40%] w-full max-w-[18rem] sm:max-w-[22rem] h-[22rem] sm:h-[28rem] flex justify-start items-center z-10 md:ml-8 mt-12 md:mt-3 sm:mr-18 p-3">
         <div className="w-full h-full rounded-full overflow-hidden border-4 border-cyan-400 shadow-2xl flex items-center justify-center bg-black z-10">
           <img
@@ -115,7 +114,6 @@ export default function Hero() {
           />
         </div>
 
-        {/* Floating Icons – Hidden on mobile */}
         <div className="hidden sm:flex absolute -top-10 -right-10 w-20 h-20 rounded-full items-center justify-center bg-gradient-to-br from-black via-black to-gray-900 border border-white/10 shadow-xl">
           <img src="/next.svg" alt="Next.js" className="w-12 h-12" />
         </div>
