@@ -115,7 +115,6 @@ export default function Hero() {
           />
         </div>
 
-        {/* Floating Tech Logos (positioned farther from avatar) */}
         <div className="absolute -top-6 -right-6 sm:-top-10 sm:-right-10 w-14 h-14 sm:w-20 sm:h-20 rounded-full flex items-center justify-center bg-gradient-to-br from-black via-black to-gray-900 border border-white/10 shadow-xl">
           <img src="/next.svg" alt="Next.js" className="w-8 h-8 sm:w-12 sm:h-12" />
         </div>
