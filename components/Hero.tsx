@@ -82,14 +82,14 @@ export default function Hero() {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="relative md:w-[45%] w-full max-w-[20rem] sm:max-w-[24rem] aspect-square flex justify-center items-center z-10 mt-12 md:mt-0"
+        className="relative md:w-[45%] w-full max-w-[20rem] sm:max-w-[25rem] aspect-[4/5] flex justify-center items-center z-10 mt-12 md:mt-0"
       >
         <div className="relative w-full h-full rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl flex items-center justify-center bg-gradient-to-br from-white/5 to-transparent backdrop-blur-md p-2">
           <div className="w-full h-full rounded-[1.5rem] overflow-hidden bg-[#111]">
             <img
               src="/kartik.png"
               alt="Kartik Vashishtha"
-              className="object-cover w-full h-full opacity-90 hover:opacity-100 transition-opacity duration-500"
+              className="object-cover object-top w-full h-full opacity-90 hover:opacity-100 transition-opacity duration-500"
             />
           </div>
         </div>
