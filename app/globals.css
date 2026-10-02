@@ -1,41 +1,13 @@
 @import "tailwindcss";
 
-/* Fancy Neon Scrollbar */
-::-webkit-scrollbar {
-  width: 12px;
-}
-
-::-webkit-scrollbar-track {
-  background: #000000; /* Set track background to black */
-  border-radius: 12px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #06b6d4, #9333ea);
-  border-radius: 12px;
-  box-shadow: 0 0 6px #06b6d4, 0 0 12px #9333ea;
-  animation: glow-scroll 3s ease-in-out infinite alternate;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #facc15, #ec4899);
-  box-shadow: 0 0 10px #facc15, 0 0 20px #ec4899;
-}
-
-/* Firefox */
+/* Hide scrollbar globally while preserving scroll functionality */
 * {
-  scrollbar-width: thin;
-  scrollbar-color: #9333ea #000000;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
 
-/* Glow animation */
-@keyframes glow-scroll {
-  0% {
-    box-shadow: 0 0 5px #06b6d4, 0 0 10px #9333ea;
-  }
-  100% {
-    box-shadow: 0 0 12px #06b6d4, 0 0 24px #9333ea;
-  }
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
 }
 
 html {
