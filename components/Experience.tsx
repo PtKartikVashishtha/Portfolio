@@ -1,113 +1,78 @@
 "use client";
 import { motion } from "framer-motion";
-import Particles from "react-tsparticles";
-import { loadSlim } from "tsparticles-slim";
-import { useCallback, useEffect, useState } from "react";
-import { Engine } from "tsparticles-engine";
 
 const experiences = [
   {
     title: "Full Stack Developer (Part-time)",
     company: "IPU IIF",
-    duration: "Mar 2025 – Present",
-    description:
-      "Building internal portals and dashboards using React, Node.js, Prisma, and PostgreSQL.",
+    duration: "Mar 2025 – Dec 2025",
+    location: "Delhi",
+    description: "Engineered and shipped 10+ SEO-friendly features using React, Node.js, TypeScript, SQL, and scalable REST APIs, improving maintainability. Collaborated with a 5+ member development team on production code, debugging, and deployment.",
     link: "https://github.com/PtKartikVashishtha",
   },
   {
-    title: "Frontend Developer Intern",
+    title: "Frontend Developer",
     company: "SyncAndExplore",
-    duration: "Jun 2025 – Present",
-    description:
-      "Developing frontend interfaces with Next.js and Tailwind CSS, focused on clean UI and performance.",
+    duration: "Jul 2025 – Aug 2025",
+    location: "Remote",
+    description: "Built 8+ responsive, mobile-first interfaces using React and Tailwind CSS, integrating REST APIs for dynamic data rendering and reusable frontend components.",
     link: "https://github.com/PtKartikVashishtha",
   },
+  {
+    title: "Co-Lead — Web Development Team",
+    company: "Arham, GGSIPU",
+    duration: "2024 – Present",
+    location: "Delhi",
+    description: "Mentored 5+ junior developers in React and Node.js, leading code reviews, technical implementation, reusable architecture, and project decisions.",
+    link: "https://github.com/PtKartikVashishtha",
+  }
 ];
 
 export default function Experience() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-  }, []);
-
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadSlim(engine);
-  }, []);
-
   return (
-    <section
-      id="experience"
-      className="relative py-24 px-4 sm:px-6 bg-black text-white overflow-hidden"
-    >
-      <Particles
-        id="experience-bg"
-        init={particlesInit}
-        options={{
-          fullScreen: { enable: false },
-          background: { color: "#000000" },
-          particles: {
-            number: { value: isMobile ? 15 : 50 },
-            color: { value: "#06b6d4" },
-            shape: { type: "circle" },
-            opacity: { value: 0.4 },
-            size: { value: 3 },
-            links: {
-              enable: !isMobile,
-              distance: 140,
-              color: "#06b6d4",
-              opacity: 0.25,
-              width: 1,
-            },
-            move: { enable: true, speed: 0.7 },
-          },
-          interactivity: {
-            events: {
-              onHover: { enable: !isMobile, mode: "repulse" },
-              resize: true,
-            },
-          },
-        }}
-        className="absolute inset-0 w-full h-full z-0"
-      />
-
-      {/* Section Heading */}
-      <motion.h2
-        className="text-[2.2rem] sm:text-[2.5rem] md:text-[3rem] font-extrabold text-center bg-gradient-to-r from-purple-400 via-cyan-400 to-yellow-400 bg-clip-text text-transparent mb-14 z-10 relative"
-        initial={{ opacity: 0, y: 20 }}
+    <section id="experience" className="relative py-24 px-6 md:px-12 bg-transparent text-white overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-purple-900/10 rounded-full blur-[120px] pointer-events-none" />
+      
+      <motion.div
+        className="text-center mb-16 relative z-10"
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "-100px" }}
       >
-        💼 Experience
-      </motion.h2>
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+          Professional <span className="text-purple-400">Experience</span>
+        </h2>
+      </motion.div>
 
-      {/* Experience Cards */}
-      <div className="relative z-10 grid gap-8 sm:grid-cols-2 max-w-6xl mx-auto">
+      <div className="relative z-10 max-w-4xl mx-auto space-y-8">
         {experiences.map((exp, i) => (
           <motion.div
             key={i}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: i * 0.15 }}
-            viewport={{ once: true }}
-            className="rounded-xl border border-white/10 bg-[#0f0f0f]/70 backdrop-blur-md p-6 shadow-lg hover:shadow-cyan-500/20 transition-all duration-300"
+            transition={{ duration: 0.5, delay: i * 0.1 }}
+            viewport={{ once: true, margin: "-50px" }}
+            className="group relative rounded-2xl bg-white/[0.02] border border-white/5 p-6 md:p-8 hover:bg-white/[0.04] hover:border-purple-500/30 transition-all duration-300"
           >
-            <h3 className="text-lg sm:text-xl font-semibold bg-gradient-to-r from-purple-400 via-cyan-400 to-yellow-300 bg-clip-text text-transparent mb-1">
-              {exp.title}
-            </h3>
-            <p className="text-sm text-white/70 font-medium mb-2">
-              {exp.company} • {exp.duration}
+            <div className="flex flex-col md:flex-row md:items-start justify-between mb-4 gap-2">
+              <div>
+                <h3 className="text-xl md:text-2xl font-bold text-gray-100 group-hover:text-purple-400 transition-colors">
+                  {exp.title}
+                </h3>
+                <div className="flex items-center gap-2 mt-1">
+                  <span className="text-lg font-medium text-cyan-400">{exp.company}</span>
+                  <span className="text-gray-500">• {exp.location}</span>
+                </div>
+              </div>
+              <div className="bg-white/10 px-3 py-1 rounded-full w-fit">
+                <span className="text-sm font-medium text-gray-300">{exp.duration}</span>
+              </div>
+            </div>
+            
+            <p className="text-gray-400 leading-relaxed mb-6">
+              {exp.description}
             </p>
-            <p className="text-sm text-gray-300 mb-4">{exp.description}</p>
-            <a
-              href={exp.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block text-sm px-4 py-2 rounded-md border border-white hover:bg-white hover:text-black transition"
-            >
-              Code ↗
-            </a>
           </motion.div>
         ))}
       </div>

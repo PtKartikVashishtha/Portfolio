@@ -1,25 +1,13 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import Particles from "react-tsparticles";
-import { loadSlim } from "tsparticles-slim";
 import { FaGithub, FaLinkedin, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import type { Engine } from "tsparticles-engine";
 
 export default function Contact() {
-  const [isMobile, setIsMobile] = useState(false);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-  }, []);
-
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadSlim(engine);
-  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -50,47 +38,23 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-24 px-4 sm:px-6 bg-black text-white overflow-hidden">
-      <Particles
-        id="contact-bg"
-        init={particlesInit}
-        options={{
-          fullScreen: { enable: false },
-          background: { color: "#000000" },
-          particles: {
-            number: { value: isMobile ? 20 : 50 },
-            color: { value: "#06b6d4" },
-            shape: { type: "circle" },
-            opacity: { value: 0.3 },
-            size: { value: 2.5 },
-            links: {
-              enable: !isMobile,
-              distance: 120,
-              color: "#06b6d4",
-              opacity: 0.25,
-              width: 1,
-            },
-            move: { enable: true, speed: 0.8 },
-          },
-          interactivity: {
-            events: {
-              onHover: { enable: !isMobile, mode: "repulse" },
-              resize: true,
-            },
-          },
-        }}
-        className="absolute inset-0 w-full h-full z-0"
-      />
+    <section id="contact" className="relative py-24 px-6 md:px-12 bg-transparent text-white overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-cyan-900/10 via-transparent to-transparent blur-3xl z-0" />
 
-      <motion.h2
-        className="text-[2.2rem] sm:text-4xl md:text-5xl font-extrabold text-center bg-gradient-to-r from-purple-400 via-pink-500 to-yellow-300 bg-clip-text text-transparent mb-12 z-10 relative"
-        initial={{ opacity: 0, y: 20 }}
+      <motion.div
+        className="text-center mb-16 relative z-10"
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "-100px" }}
       >
-        📬 Get in Touch
-      </motion.h2>
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+          Get in <span className="text-yellow-400">Touch</span>
+        </h2>
+        <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+          Open to collaborations, freelance opportunities, or a friendly hello!
+        </p>
+      </motion.div>
 
       <motion.div
         className="relative z-10 max-w-3xl mx-auto text-center"
@@ -99,23 +63,19 @@ export default function Contact() {
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
       >
-        <p className="text-gray-300 text-base mb-6 leading-relaxed">
-          Open to collaborations, freelance, or a friendly hello!
-        </p>
-
-        <div className="flex justify-center gap-6 mb-10 text-2xl text-white">
-          <a href="https://linkedin.com/in/kartik-vashishtha-7514bb375" target="_blank" className="hover:text-cyan-400 transition">
+        <div className="flex justify-center gap-6 mb-12 text-2xl text-white">
+          <a href="https://linkedin.com/in/kartik-vashishtha-7514bb375" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:text-cyan-400 hover:border-cyan-400/50 transition-all">
             <FaLinkedin />
           </a>
-          <a href="https://github.com/PtKartikVashishtha" target="_blank" className="hover:text-cyan-400 transition">
+          <a href="https://github.com/PtKartikVashishtha" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:text-purple-400 hover:border-purple-400/50 transition-all">
             <FaGithub />
           </a>
-          <a href="mailto:kartik2005vashishtha@gmail.com" className="hover:text-cyan-400 transition">
+          <a href="mailto:kartik2005vashishtha@gmail.com" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:text-pink-400 hover:border-pink-400/50 transition-all">
             <FaEnvelope />
           </a>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6 w-full max-w-xl mx-auto">
+        <form onSubmit={handleSubmit} className="space-y-6 w-full max-w-xl mx-auto bg-white/[0.02] border border-white/5 p-8 rounded-3xl backdrop-blur-sm shadow-xl">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <input
               name="name"
@@ -124,7 +84,7 @@ export default function Contact() {
               value={form.name}
               onChange={handleChange}
               required
-              className="bg-[#0f0f0f] border border-white/10 px-4 py-3 rounded-lg w-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"
+              className="bg-white/5 border border-white/10 px-5 py-3.5 rounded-xl w-full text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-400/50 focus:border-transparent transition-all"
             />
             <input
               name="email"
@@ -133,7 +93,7 @@ export default function Contact() {
               value={form.email}
               onChange={handleChange}
               required
-              className="bg-[#0f0f0f] border border-white/10 px-4 py-3 rounded-lg w-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"
+              className="bg-white/5 border border-white/10 px-5 py-3.5 rounded-xl w-full text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-400/50 focus:border-transparent transition-all"
             />
           </div>
           <textarea
@@ -143,12 +103,12 @@ export default function Contact() {
             value={form.message}
             onChange={handleChange}
             required
-            className="bg-[#0f0f0f] border border-white/10 px-4 py-3 rounded-lg w-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition"
+            className="bg-white/5 border border-white/10 px-5 py-3.5 rounded-xl w-full text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-400/50 focus:border-transparent transition-all resize-none"
           />
           <button
             type="submit"
             disabled={loading}
-            className="mt-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg text-white font-semibold hover:brightness-110 transition"
+            className="w-full mt-4 px-6 py-4 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-xl text-white font-bold tracking-wide hover:shadow-[0_0_20px_rgba(234,179,8,0.4)] hover:scale-[1.02] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
           >
             {loading ? "Sending..." : "Send Message 🚀"}
           </button>
@@ -158,12 +118,13 @@ export default function Contact() {
       {/* Floating Call Button */}
       <a
         href="tel:+917599319302"
-        className="fixed bottom-5 right-5 z-50 bg-gradient-to-r from-purple-600 to-pink-500 text-white p-4 rounded-full shadow-xl hover:scale-105 transition"
+        className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-yellow-500 to-orange-500 text-white p-4 rounded-full shadow-lg hover:shadow-[0_0_20px_rgba(234,179,8,0.5)] hover:scale-110 transition-all"
       >
-        <FaPhoneAlt className="text-lg" />
+        <FaPhoneAlt className="text-xl" />
       </a>
 
       <ToastContainer position="top-right" theme="dark" />
     </section>
   );
 }
+

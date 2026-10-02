@@ -1,122 +1,162 @@
 "use client";
 import { motion } from "framer-motion";
-import Particles from "react-tsparticles";
-import { useCallback, useEffect, useState } from "react";
-import { loadSlim } from "tsparticles-slim";
-import { Engine } from "tsparticles-engine";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
-const projects = [
+interface Project {
+  name: string;
+  desc: string;
+  link?: string;
+  github?: string;
+  tech: string[];
+}
+
+const projects: Project[] = [
   {
-    name: "Medium Blogging Platform",
-    desc: "Built with MERN stack & Markdown support. Fully responsive with comments and auth.",
-    link: "https://medium-frontend-eight.vercel.app/",
+    name: "Shree Nakshatralok — Astrology Platform",
+    desc: "Fully optimized Next.js astrology platform achieving 100/100 SEO & 94/100 Performance. Improved frontend render-blocking and JS payload.",
+    link: "https://shree-nakshatralok.vercel.app",
+    tech: ["Next.js", "SEO", "Performance"]
   },
   {
-    name: "Dummy Transaction Simulator",
-    desc: "Firebase + React-based simulator for dummy transfers with live balance tracking.",
-    link: "https://github.com/PtKartikVashishtha/Transanction-with-Random-dummy-money",
+    name: "FinAgent — Banking AI Platform",
+    desc: "Developed an admin panel for a banking AI platform integrating backend APIs and dynamic live data.",
+    link: "https://fin-agent-delta.vercel.app/admin/",
+    tech: ["React", "APIs", "Admin Dashboard"]
   },
   {
-    name: "Crypto Transfer UI",
-    desc: "UI for single-command crypto simulation built in Next.js with local transaction history.",
-    link: "https://github.com/PtKartikVashishtha/crypto-transfer-ui-single-command",
+    name: "Turing Machine Simulator",
+    desc: "Interactive visual simulator and execution engine for Turing machines, modeling finite state automata, transition functions, and tape dynamics.",
+    link: "https://github.com/PtKartikVashishtha/turing-machine",
+    github: "https://github.com/PtKartikVashishtha/turing-machine",
+    tech: ["TypeScript", "Automata Theory", "Algorithms", "React"]
   },
+  {
+    name: "Developer Portfolio",
+    desc: "High-performance personal portfolio built with Next.js 15 App Router, React 19, Tailwind v4, tsParticles, and Framer Motion.",
+    link: "https://portfolio-five-alpha-44.vercel.app",
+    github: "https://github.com/PtKartikVashishtha/portfolio-kartik",
+    tech: ["Next.js 15", "React 19", "Tailwind CSS v4", "Framer Motion"]
+  },
+  {
+    name: "Becopy — AI-Powered Coding Platform",
+    desc: "Full-stack platform with AI code tools, community, and JWT/NextAuth. Integrated OpenAI APIs for generation and conversion.",
+    link: "https://github.com/PtKartikVashishtha",
+    github: "https://github.com/PtKartikVashishtha",
+    tech: ["Next.js", "Express", "OpenAI", "MongoDB"]
+  },
+  {
+    name: "LivingTrustSwarm",
+    desc: "AI-powered risk assessment platform for B2B travel agencies. ML integrations with real-time dashboards.",
+    link: "https://github.com/PtKartikVashishtha",
+    github: "https://github.com/PtKartikVashishtha",
+    tech: ["Next.js", "FastAPI", "WebSockets"]
+  },
+  {
+    name: "Paytm-Like Money Transfer App",
+    desc: "Implemented atomic deposits, withdrawals, and race-condition-safe balance updates for concurrent transactions.",
+    link: "https://github.com/PtKartikVashishtha",
+    github: "https://github.com/PtKartikVashishtha",
+    tech: ["Next.js", "Prisma ORM", "PostgreSQL"]
+  },
+  {
+    name: "Medium Clone",
+    desc: "Full-stack blogging platform deployed with Vercel and Cloudflare Workers for scalable edge API performance.",
+    link: "https://github.com/PtKartikVashishtha",
+    github: "https://github.com/PtKartikVashishtha",
+    tech: ["Next.js", "Prisma Accelerate", "Neon DB"]
+  }
 ];
 
 export default function Projects() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-  }, []);
-
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadSlim(engine);
-  }, []);
-
   return (
-    <section
-      id="projects"
-      className="relative py-20 px-4 sm:px-6 bg-black text-white overflow-hidden"
-    >
-      {/* Particle Background */}
-      <Particles
-        id="project-bg"
-        init={particlesInit}
-        options={{
-          fullScreen: { enable: false },
-          background: { color: "#000000" },
-          particles: {
-            number: { value: isMobile ? 20 : 60 },
-            color: { value: "#06b6d4" },
-            shape: { type: "circle" },
-            opacity: { value: 0.4 },
-            size: { value: 3 },
-            links: {
-              enable: !isMobile,
-              distance: 140,
-              color: "#06b6d4",
-              opacity: 0.25,
-              width: 1,
-            },
-            move: { enable: true, speed: 0.6 },
-          },
-          interactivity: {
-            events: {
-              onHover: { enable: !isMobile, mode: "repulse" },
-              resize: true,
-            },
-          },
-        }}
-        className="absolute inset-0 w-full h-full z-0"
-      />
-
-      {/* Radial Glow (behind content) */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-pink-500/20 via-black to-transparent blur-2xl pointer-events-none z-0" />
+    <section id="projects" className="relative py-24 px-6 md:px-12 bg-transparent text-white overflow-hidden">
+      {/* Background Gradients */}
+      <div className="absolute top-1/4 left-0 w-[400px] h-[400px] bg-purple-600/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-cyan-600/10 rounded-full blur-[100px] pointer-events-none" />
 
       {/* Section Heading */}
-      <motion.h2
-        className="text-[2.2rem] sm:text-[2.5rem] md:text-[3rem] font-extrabold text-center bg-gradient-to-r from-fuchsia-500 via-cyan-400 to-yellow-300 bg-clip-text text-transparent mb-14 z-10 relative"
-        initial={{ opacity: 0, y: 20 }}
+      <motion.div
+        className="text-center mb-16 relative z-10"
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "-100px" }}
       >
-        💎 Featured Work
-      </motion.h2>
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
+          Featured <span className="text-cyan-400">Projects</span>
+        </h2>
+        <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+          A showcase of my recent full-stack applications, AI integrations, and performance-optimized platforms.
+        </p>
+      </motion.div>
 
       {/* Projects Grid */}
-      <div className="relative z-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+      <div className="relative z-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
         {projects.map((proj, i) => (
-          <motion.a
+          <motion.div
             key={i}
-            href={proj.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative p-5 rounded-2xl border border-white/10 bg-gradient-to-br from-[#10101d] to-[#0f0f0f] shadow-md hover:scale-[1.02] transition-all duration-300 overflow-hidden hover:shadow-cyan-500/30"
-            initial={{ opacity: 0, y: 40 }}
+            className="group flex flex-col justify-between h-full p-6 rounded-2xl bg-white/[0.03] border border-white/10 hover:bg-white/[0.06] hover:border-cyan-500/50 transition-all duration-300 backdrop-blur-sm shadow-xl hover:shadow-cyan-500/20"
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: i * 0.15 }}
-            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.1 }}
+            viewport={{ once: true, margin: "-50px" }}
           >
-            {/* Project Index Bubble */}
-            <div className="absolute -top-2 -left-2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-fuchsia-500 to-cyan-500 text-black font-bold text-sm flex items-center justify-center shadow z-20">
-              {i + 1}
+            <div>
+              <div className="flex justify-between items-start mb-4">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center border border-white/5 group-hover:scale-110 transition-transform">
+                  <span className="text-xl">📁</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  {proj.github && (
+                    <a
+                      href={proj.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-400 hover:text-white p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all"
+                      title="View Source Code"
+                    >
+                      <FaGithub className="text-base" />
+                    </a>
+                  )}
+                  {proj.link && (
+                    <a
+                      href={proj.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-400 hover:text-cyan-400 p-2 rounded-lg bg-white/5 hover:bg-cyan-500/20 transition-all"
+                      title="Open Live Link"
+                    >
+                      <FaExternalLinkAlt className="text-sm" />
+                    </a>
+                  )}
+                </div>
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-gray-100 group-hover:text-white transition-colors">
+                <a
+                  href={proj.link || proj.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-cyan-400 transition-colors"
+                >
+                  {proj.name}
+                </a>
+              </h3>
+              <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                {proj.desc}
+              </p>
             </div>
-
-            {/* Border glow hover ring */}
-            <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-cyan-500 transition-all duration-500 opacity-0 group-hover:opacity-100 blur-sm pointer-events-none" />
-
-            {/* Content */}
-            <h3 className="text-lg sm:text-xl font-bold mb-2 text-cyan-300 group-hover:text-white transition">
-              {proj.name}
-            </h3>
-            <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
-              {proj.desc}
-            </p>
-          </motion.a>
+            
+            <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-white/5">
+              {proj.tech.map((t, idx) => (
+                <span key={idx} className="text-xs font-medium px-2.5 py-1 rounded-md bg-white/5 text-gray-300">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </motion.div>
         ))}
       </div>
     </section>
   );
 }
+
