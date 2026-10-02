@@ -57,6 +57,7 @@ const projects: Project[] = [
   {
     name: "Medium Clone",
     desc: "Full-stack blogging platform deployed with Vercel and Cloudflare Workers for scalable edge API performance.",
+    link: "https://medium-frontend-eight.vercel.app/",
     github: "https://github.com/PtKartikVashishtha",
     tech: ["Next.js", "Prisma Accelerate", "Neon DB"]
   }
