@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
 
-const navItems = ["About", "Skills", "Projects", "Experience", "Education", "Contact"];
+const navItems = ["Home", "Skills", "Projects", "Experience", "Education", "Contact"];
 
 export default function NavBar() {
   const [active, setActive] = useState("");

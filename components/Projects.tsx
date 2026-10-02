@@ -24,44 +24,39 @@ const projects: Project[] = [
     tech: ["React", "APIs", "Admin Dashboard"]
   },
   {
+    name: "Developer Portfolio",
+    desc: "High-performance personal portfolio built with Next.js 15 App Router, React 19, Tailwind v4, tsParticles, and Framer Motion.",
+    link: "https://portfolio-five-alpha-44.vercel.app",
+    github: "https://github.com/PtKartikVashishtha/Portfolio",
+    tech: ["Next.js 15", "React 19", "Tailwind CSS v4", "Framer Motion"]
+  },
+  {
     name: "Turing Machine Simulator",
     desc: "Interactive visual simulator and execution engine for Turing machines, modeling finite state automata, transition functions, and tape dynamics.",
-    link: "https://github.com/PtKartikVashishtha/turing-machine",
     github: "https://github.com/PtKartikVashishtha/turing-machine",
     tech: ["TypeScript", "Automata Theory", "Algorithms", "React"]
   },
   {
-    name: "Developer Portfolio",
-    desc: "High-performance personal portfolio built with Next.js 15 App Router, React 19, Tailwind v4, tsParticles, and Framer Motion.",
-    link: "https://portfolio-five-alpha-44.vercel.app",
-    github: "https://github.com/PtKartikVashishtha/portfolio-kartik",
-    tech: ["Next.js 15", "React 19", "Tailwind CSS v4", "Framer Motion"]
-  },
-  {
     name: "Becopy — AI-Powered Coding Platform",
     desc: "Full-stack platform with AI code tools, community, and JWT/NextAuth. Integrated OpenAI APIs for generation and conversion.",
-    link: "https://github.com/PtKartikVashishtha",
     github: "https://github.com/PtKartikVashishtha",
     tech: ["Next.js", "Express", "OpenAI", "MongoDB"]
   },
   {
     name: "LivingTrustSwarm",
     desc: "AI-powered risk assessment platform for B2B travel agencies. ML integrations with real-time dashboards.",
-    link: "https://github.com/PtKartikVashishtha",
     github: "https://github.com/PtKartikVashishtha",
     tech: ["Next.js", "FastAPI", "WebSockets"]
   },
   {
     name: "Paytm-Like Money Transfer App",
     desc: "Implemented atomic deposits, withdrawals, and race-condition-safe balance updates for concurrent transactions.",
-    link: "https://github.com/PtKartikVashishtha",
     github: "https://github.com/PtKartikVashishtha",
     tech: ["Next.js", "Prisma ORM", "PostgreSQL"]
   },
   {
     name: "Medium Clone",
     desc: "Full-stack blogging platform deployed with Vercel and Cloudflare Workers for scalable edge API performance.",
-    link: "https://github.com/PtKartikVashishtha",
     github: "https://github.com/PtKartikVashishtha",
     tech: ["Next.js", "Prisma Accelerate", "Neon DB"]
   }
@@ -114,17 +109,19 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="text-gray-400 hover:text-white p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all"
                       title="View Source Code"
+                      aria-label={`View source code for ${proj.name}`}
                     >
                       <FaGithub className="text-base" />
                     </a>
                   )}
-                  {proj.link && (
+                  {proj.link && proj.link !== proj.github && (
                     <a
                       href={proj.link}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-400 hover:text-cyan-400 p-2 rounded-lg bg-white/5 hover:bg-cyan-500/20 transition-all"
                       title="Open Live Link"
+                      aria-label={`Open live link for ${proj.name}`}
                     >
                       <FaExternalLinkAlt className="text-sm" />
                     </a>

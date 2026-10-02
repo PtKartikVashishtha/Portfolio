@@ -64,14 +64,41 @@ export default function Contact() {
         viewport={{ once: true }}
       >
         <div className="flex justify-center gap-6 mb-12 text-2xl text-white">
-          <a href="https://linkedin.com/in/kartik-vashishtha-7514bb375" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:text-cyan-400 hover:border-cyan-400/50 transition-all">
+          <a
+            href="https://linkedin.com/in/kartik-vashishtha-7514bb375"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn Profile"
+            className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:text-cyan-400 hover:border-cyan-400/50 transition-all"
+            title="LinkedIn"
+          >
             <FaLinkedin />
           </a>
-          <a href="https://github.com/PtKartikVashishtha" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:text-purple-400 hover:border-purple-400/50 transition-all">
+          <a
+            href="https://github.com/PtKartikVashishtha"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub Profile"
+            className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:text-purple-400 hover:border-purple-400/50 transition-all"
+            title="GitHub"
+          >
             <FaGithub />
           </a>
-          <a href="mailto:kartik2005vashishtha@gmail.com" className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:text-pink-400 hover:border-pink-400/50 transition-all">
+          <a
+            href="mailto:kartik2005vashishtha@gmail.com"
+            aria-label="Send Email"
+            className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:text-pink-400 hover:border-pink-400/50 transition-all"
+            title="Email"
+          >
             <FaEnvelope />
+          </a>
+          <a
+            href="tel:+917599319302"
+            aria-label="Direct Phone Call"
+            className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:text-yellow-400 hover:border-yellow-400/50 transition-all"
+            title="Call (+91 7599319302)"
+          >
+            <FaPhoneAlt />
           </a>
         </div>
 
@@ -114,14 +141,6 @@ export default function Contact() {
           </button>
         </form>
       </motion.div>
-
-      {/* Floating Call Button */}
-      <a
-        href="tel:+917599319302"
-        className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-yellow-500 to-orange-500 text-white p-4 rounded-full shadow-lg hover:shadow-[0_0_20px_rgba(234,179,8,0.5)] hover:scale-110 transition-all"
-      >
-        <FaPhoneAlt className="text-xl" />
-      </a>
 
       <ToastContainer position="top-right" theme="dark" />
     </section>

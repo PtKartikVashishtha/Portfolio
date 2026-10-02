@@ -68,7 +68,7 @@ export default function Hero() {
 
         <div className="pt-6">
           <a
-            href="/resume_kartik.pdf"
+            href="/kartik_vashishtha_resume.pdf"
             download="KartikVashishtha_Resume.pdf"
             className="inline-block px-8 py-3.5 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full text-white font-bold tracking-wide hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:scale-105 transition-all duration-300"
           >

@@ -28,7 +28,6 @@ const skills = {
     { name: "EasyOCR", icon: "https://cdn.simpleicons.org/python/ffffff" },
     { name: "Pandas", icon: "https://cdn.simpleicons.org/pandas/150458" },
     { name: "OpenAI API", icon: "https://cdn.simpleicons.org/openai/ffffff" },
-    { name: "Prisma ORM", icon: "https://cdn.simpleicons.org/prisma/ffffff" },
   ],
   Databases: [
     { name: "MongoDB", icon: "https://cdn.simpleicons.org/mongodb/47A248" },
@@ -40,6 +39,7 @@ const skills = {
   "Tools & Cloud": [
     { name: "Git", icon: "https://cdn.simpleicons.org/git/F05032" },
     { name: "Docker", icon: "https://cdn.simpleicons.org/docker/2496ED" },
+    { name: "Prisma ORM", icon: "https://cdn.simpleicons.org/prisma/ffffff" },
     { name: "Socket.IO", icon: "https://cdn.simpleicons.org/socketdotio/ffffff" },
     { name: "JWT", icon: "https://cdn.simpleicons.org/jsonwebtokens/ffffff" },
     { name: "Vercel", icon: "https://cdn.simpleicons.org/vercel/ffffff" },
@@ -61,7 +61,10 @@ export default function Skills() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (

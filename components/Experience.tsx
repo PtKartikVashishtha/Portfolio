@@ -8,7 +8,6 @@ const experiences = [
     duration: "Mar 2025 – Dec 2025",
     location: "Delhi",
     description: "Engineered and shipped 10+ SEO-friendly features using React, Node.js, TypeScript, SQL, and scalable REST APIs, improving maintainability. Collaborated with a 5+ member development team on production code, debugging, and deployment.",
-    link: "https://github.com/PtKartikVashishtha",
   },
   {
     title: "Frontend Developer",
@@ -16,7 +15,6 @@ const experiences = [
     duration: "Jul 2025 – Aug 2025",
     location: "Remote",
     description: "Built 8+ responsive, mobile-first interfaces using React and Tailwind CSS, integrating REST APIs for dynamic data rendering and reusable frontend components.",
-    link: "https://github.com/PtKartikVashishtha",
   },
   {
     title: "Co-Lead — Web Development Team",
@@ -24,7 +22,6 @@ const experiences = [
     duration: "2024 – Present",
     location: "Delhi",
     description: "Mentored 5+ junior developers in React and Node.js, leading code reviews, technical implementation, reusable architecture, and project decisions.",
-    link: "https://github.com/PtKartikVashishtha",
   }
 ];
 
