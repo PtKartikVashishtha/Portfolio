@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     apple: "/guru.png",
   },
   verification: {
-    google: "google3aca3a3d99cfeb49",
+    google: "heq7ayZ5PvTAZpllKus3eW3r9akbJ85VK8BbNRBwQvo",
   },
 };
 
